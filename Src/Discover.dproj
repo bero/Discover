@@ -1,0 +1,157 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{1160D5CF-E25F-46CE-8915-6DB0EDD7AF36}</ProjectGuid>
+			<MainSource>Discover.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_DependencyCheckOutputName>..\Exe\Discover.exe</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_ExeOutput>..\Exe</DCC_ExeOutput>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_DcuOutput>..\Dcus</DCC_DcuOutput>
+			<DCC_N>false</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_K>false</DCC_K>
+			<DCC_E>false</DCC_E>
+			<DCC_F>false</DCC_F>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="Discover.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="Main.pas">
+				<Form>FormMain</Form>
+			</DCCReference>
+			<DCCReference Include="CodeParser.pas"/>
+			<DCCReference Include="ObjectPascalTokenizer.pas"/>
+			<DCCReference Include="DataBase.pas"/>
+			<DCCReference Include="Exceptions.pas"/>
+			<DCCReference Include="Util.pas"/>
+			<DCCReference Include="MapFile.pas"/>
+			<DCCReference Include="Process.pas"/>
+			<DCCReference Include="Version.pas"/>
+			<DCCReference Include="PersistentForm.pas"/>
+			<DCCReference Include="F_Options.pas">
+				<Form>FormOptions</Form>
+			</DCCReference>
+			<DCCReference Include="F_Splash.pas">
+				<Form>FormSplash</Form>
+			</DCCReference>
+			<DCCReference Include="Globals.pas"/>
+			<DCCReference Include="F_Edit.pas">
+				<Form>FormEdit</Form>
+			</DCCReference>
+			<DCCReference Include="F_Export.pas">
+				<Form>FormExport</Form>
+			</DCCReference>
+			<DCCReference Include="ProjectInfo.pas"/>
+			<DCCReference Include="F_ProjectInfo.pas">
+				<Form>FormProjectInfo</Form>
+			</DCCReference>
+			<DCCReference Include="CommandLineHandling.pas">
+				<Form>$R *.RES</Form>
+			</DCCReference>
+			<RcItem Include="..\Images\COV.BMP">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>B_PT_COVERED</ResourceId>
+			</RcItem>
+			<RcItem Include="..\Images\UNCOV.BMP">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>B_PT_UNCOVERED</ResourceId>
+			</RcItem>
+			<RcItem Include="..\Images\DIS.BMP">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>B_DISABLED</ResourceId>
+			</RcItem>
+			<RcItem Include="..\Images\ENA.BMP">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>B_ENABLED</ResourceId>
+			</RcItem>
+			<RcItem Include="..\Images\SHUT.BMP">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>B_LOCKSHUT</ResourceId>
+			</RcItem>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>VCLApplication</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">Discover.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">2</VersionInfo>
+						<VersionInfo Name="MinorVer">9</VersionInfo>
+						<VersionInfo Name="Release">2</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1033</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">2.9.2.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
