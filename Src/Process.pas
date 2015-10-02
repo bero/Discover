@@ -118,7 +118,7 @@ procedure TDebugThread.Execute;
     var
       Context : TContext;
       i, Idx : integer;
-      Count : DWORD;
+      Count : SIZE_T;
   begin
     // Locate the BP address
     Process.GetCoveragePoint(integer(Address),CurrentCoveragePoint,i);
@@ -147,7 +147,7 @@ procedure TDebugThread.Execute;
   procedure HandleDebugString(DebugInfo:TOutputDebugStringInfo);
     var
       s : array [0..255] of char;
-      Dmy : DWORD;
+      Dmy : SIZE_T;
   begin
     // Get the debug string
     if DebugInfo.nDebugStringLength > SizeOf(s) then begin
@@ -420,7 +420,7 @@ end {TProcess.SetInitialBreakPoints};
 function TProcess.SetOneBreakPoint(aProcess : THandle; aPoint : TCoveragePoint) : integer;
   var
     b : byte;
-    Dmy : DWORD;
+    Dmy : SIZE_T;
 begin
   Result := 0;
   if aPoint.Valid then begin
